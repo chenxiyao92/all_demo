@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books  xmlns="http://www.example.org/books"
+        xsi:schemaLocation="http://www.example.org/books books.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <book address="藏经阁">
+        <name>java从入门到放弃</name>
+        <author>曹老师</author>
+        <price>9.9</price>
+    </book>
+    <book address="图书馆">
+        <name>黄老师带你走向人生巅峰</name>
+        <author>黄老师</author>
+        <price>88</price>
+    </book>
+</books>
