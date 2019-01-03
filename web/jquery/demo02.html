@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+       <a id="tip" title="我是提示">我有提示哦</a>
+    </div>
+
+
+</body>
+<script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $("#tip").mouseover(function (e) {
+//            alert(e.pageX);
+            var $t = "<span>快速的提示内容"+this.title+"</span>";
+                $("body").append($t).css(
+                {
+                    "top":(e.pageY)+"px",
+                    "left":(e.pageX)+"px"
+                }
+                ).show();
+        }).mouseout(function () {
+            $("span").remove();
+        })
+
+
+    })
+
+
+</script>
+</html>

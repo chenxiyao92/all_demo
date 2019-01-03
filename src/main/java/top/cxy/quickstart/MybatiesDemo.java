@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import top.cxy.pojo.Student;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -16,7 +15,8 @@ import java.io.InputStream;
 public class MybatiesDemo {
     public static void main(String[] args) throws Exception {
 
-        String resource = "mybatis-config.xml";
+        final String config = "mybatis-config.xml";
+        String resource = config;
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 

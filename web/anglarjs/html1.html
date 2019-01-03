@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button onclick="fn()" value="xianshi" name="xianzhi">xianshis</button>
+
+</body>
+<script>
+
+    nmb = new Array(5);
+    nmb[0] = 11;
+    nmb[1] = 22;
+    nmb[2] = 23;
+    nmb[3] = 24;
+    nmb[4] = 25;
+    var dat = new Date();
+    function fn() {
+        for (var i in nmb) {
+            document.write(nmb[i])
+        }
+
+        with (dat) {
+            document.write(getYear()) ;
+            getMonth();
+        }
+
+    }
+
+
+</script>
+</html>

@@ -17,17 +17,25 @@ public class StandJdbcDemo {
     @Test
     public void test1() throws ClassNotFoundException, SQLException {
 
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/quick", "root", "123");
-        conn.setAutoCommit(false);
+        Connection conn = getConnection("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/quick", "root", "123");
+        conn.setAutoCommit(true);
         PreparedStatement preparedStatement = conn.prepareStatement("select * from students where id =?");
         preparedStatement.setString(1,"1");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
-            System.out.println(resultSet.getString("name"));
+            jiexi(resultSet);
         }
         conn.commit();
 
 
+    }
+
+    private void jiexi(ResultSet resultSet) throws SQLException {
+        System.out.println(resultSet.getString("name"));
+    }
+
+    private Connection getConnection(String driver, String url, String username, String password) throws ClassNotFoundException, SQLException {
+        Class.forName(driver);
+        return DriverManager.getConnection(url, username, password);
     }
 }
