@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+        <div id="app">
+<!--            {{message}}-->
+            <div v-text="message"></div>
+            <!-- 会对内容进行html 绑定 -->
+            <div v-html="message2"></div>
+        </div>
+
+<!--        <div id="app2">-->
+<!--            {{getName()}}-->
+<!--        </div>-->
+
+        <div id="app2">
+            {{fullName}}
+        </div>
+
+</body>
+
+<script>
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'zhangsan',
+            message2: '<h1>lisi<h1>'
+        }
+    });
+
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {
+          firstName : 'zhang',
+          lastName : 'san',
+          fullName : 'zhangsan san',
+          age: 2
+        },
+        beforeCreate: function (){
+            console.log("beforeCreate");
+        },
+        watch:{
+            firstName : function () {
+                console.log("watch");
+                this.fullName = this.firstName + ' ' +this.lastName
+            },
+            lastName : function () {
+                console.log("watch");
+                this.fullName = this.firstName + ' ' +this.lastName
+            }
+        },
+        methods: {
+            getName: function () {
+                console.log("getName计算一次");
+                return this.firstName + ' ' +this.lastName
+            }
+        },
+        computed :{
+            computerFullName : function (){
+                console.log("计算一次");
+                return this.firstName + ' ' +this.lastName
+            }
+        }
+    });
+
+
+</script>
+</html>

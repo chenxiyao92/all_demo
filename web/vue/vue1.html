@@ -14,8 +14,10 @@
             <li v-for="item in dataList">
                 {{ item }}
             </li>
-
         </ul>
+
+        <span v-bind:title="title">鼠标悬浮</span>
+        <div v-if="boo">显示吗</div>
     </div>
 </body>
 
@@ -24,6 +26,8 @@
     var app = new Vue({
         el: '#app',
         data: {
+            boo: false,
+            title:'页面加载于 ' + new Date().toLocaleString(),
             message: '',
             dataList:[]
         },
