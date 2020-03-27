@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+
+        <div id="app">
+            <input  type="text" v-model="message">
+            <button  @click="addToDo()">添加</button>
+            <button  v-on:click="addToDo()">添加2</button>
+            <ul>
+              <add-li v-bind:chuandi="item" v-for="(item) in toDoList"></add-li>
+            </ul>
+        </div>
+
+</body>
+
+<script>
+
+
+    var AddLi = {
+         props:["chuandi"],
+        template:"<li>{{chuandi}}</li>"
+    }
+    var vm = new Vue({
+        el: '#app',
+        components:{
+            AddLi : AddLi
+        },
+        data:{
+            message:"",
+            toDoList:[]
+        },
+        methods:{
+            addToDo:function (data) {
+
+                if(this.message == null || this.message === ''){
+                    console.log(this.message)
+                    return;
+                }
+                this.toDoList.push(this.message);
+                this.message = '';
+            }
+        }
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>

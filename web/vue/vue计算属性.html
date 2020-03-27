@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+
+        <div id="app">
+<!--          {{getFullName()}}-->
+<!--          {{full}}-->
+          {{getFullName2}}
+
+        </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            firstName:"zhang",
+            lastName:"san",
+            full :"zhang san",
+            age:11
+        },
+        methods:{
+            addToDo:function (data) {
+                if(this.message == null || this.message === ''){
+                    console.log(this.message)
+                    return;
+                }
+                this.toDoList.push(this.message);
+                this.message = '';
+            },
+            getFullName:function () {
+                console.log("getFullName");
+                return this.firstName + this.lastName;
+            }
+        },
+        computed:{
+            // 这里默认走的就是getter方法
+            // getFullName2:function () {
+            //     console.log("通过计算属性计算");
+            //     return this.firstName + this.lastName;
+            //
+            // }
+            getFullName2:{
+                //是get 和 set
+                get:function () {
+                    console.log("getFullName2的getter方法");
+                        return this.firstName + this.lastName;
+                },
+                set:function (fullname) {
+                    console.log("getFullName2的setter方法");
+                    console.log(fullname)
+                }
+            }
+
+        },
+        watch : {
+            firstName: function () {
+                console.log("通过firstName计算");
+
+                this.full = this.firstName + this.lastName;
+            },
+            lastName: function () {
+                console.log("通过lastName计算");
+
+                this.full = this.firstName + this.lastName;
+            }
+        }
+
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>

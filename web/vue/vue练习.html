@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        {{message +'   '+ '拼接js'}}
+        {{show()}}
+        <br>
+
+        <div  v-text="message2"></div>
+        <div v-html="message3"></div>
+
+        <input type="text" v-model="tongbu" placeholder="请输入">
+        <button v-on:click="add">点击添加</button>
+        <ul>
+            <li v-on:click="delEl(index)" v-for="(item,index) in doList">{{item}}</li>
+        </ul>
+        {{allMessage}}
+
+        <div>总金额:{{totalValue}}</div>
+
+
+        <ul>
+            <!--
+                    这里加的值还是加到  doList2中,
+                    只不过 渲染通过 将值传到 子组件中进行渲染
+             -->
+           <qqq v-bind:chunazhi="item"  :index="index" @defa="defa" v-for="(item,index) in doList2"></qqq>
+
+        </ul>
+
+
+
+    </div>
+
+    <button onclick="tanchu()">
+        弹出vue绑定的属性
+    </button>
+
+
+</body>
+
+<script>
+    Vue.component(
+        "qqq",{
+            //这里index 接收之后,  能通过 调用js方法再传过去
+            template:"<li @click='de(index)'>{{chunazhi}}</li>",
+            props:['chunazhi',"index"],
+            methods:{de:function(index) {
+                 this.$emit('defa',index);
+                }}}
+    );
+
+ var vm = new Vue({
+         el:"#app",
+         data:{
+             message:"显示我的信息",
+             message2:"显示我的信息2",
+             message3:"<h1>显示我的信息2</h1>",
+             doList:['1str','2str'],
+             doList2:[],
+             tongbu:"",
+             value1:0,
+             value2:1,
+             totalValue:0
+         },
+         methods:{
+             add:function () {
+                this.doList2.push(this.tongbu)
+                 this.tongbu=""
+             },
+             show:function () {
+                return "hahhah"
+             },
+             delEl:function (index) {
+                this.doList.splice(index,1)
+             },
+             defa:function (index) {
+                 this.doList2.splice(index,1)
+
+             }
+         },
+        //计算这里当做一个属性值
+        computed:{
+             allMessage:function () {
+                return this.message+this.message2+this.message3;
+             }
+        },
+       watch:{
+            value1 : function () {
+                    this.totalValue = this.value1 + this.value2
+            },
+           value2 : function () {
+               this.totalValue = this.value1 + this.value2
+           }
+       },
+     beforeCreate:function () {
+            console.log("beforeCreate")
+     }
+ });
+
+ function tanchu() {
+   alert(vm.$data.doList);
+ }
+
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+
+        <div id="app">
+            <input  type="text" v-model="message">
+            <button  @click="addToDo()">添加</button>
+            <button  v-on:click="addToDo()">添加2</button>
+            <ul>
+              <add-li v-bind:chuandi="item"   :chuandi2="index" v-on:delete="fuMethod" v-for="(item,index) in toDoList"></add-li>
+            </ul>
+
+<!--            悬浮会触发,    把getnow属性绑定到 title属性中  -->
+            <span v-bind:title="getnow">vue悬浮1</span>
+            <span  title="零售价： ">原生悬浮2</span>
+
+        </div>
+
+</body>
+
+<script>
+
+
+    var AddLi = {
+         props:["chuandi","chuandi2"],
+        template:"<li @click='subMethod'>{{chuandi}}</li>",
+        methods:{
+            subMethod:function () {
+                //子组件向父组件出发一个 delete事件
+                this.$emit("delete",this.chuandi2);
+            }
+        }
+    }
+    var vm = new Vue({
+        el: '#app',
+        components:{
+            AddLi : AddLi
+        },
+        data:{
+            message:"",
+            toDoList:[],
+            getnow:'页面加载与'+ new Date().toLocaleString()
+        },
+        methods:{
+            addToDo:function (data) {
+
+                if(this.message == null || this.message === ''){
+                    console.log(this.message)
+                    return;
+                }
+                this.toDoList.push(this.message);
+                this.message = '';
+            },
+            fuMethod:function (index) {
+                // list.splice(0, 1);  // 删除  -> 从下标为0开始,长度为1
+                this.toDoList.splice(index,1);
+
+            }
+        }
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>

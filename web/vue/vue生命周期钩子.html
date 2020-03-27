@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+
+        <div id="app">
+            <input  type="text" v-model="message">
+            <button  @click="addToDo()">添加</button>
+            <button  v-on:click="addToDo()">添加2</button>
+            <ul>
+              <li v-for="(item) in toDoList">{{item}}</li>
+            </ul>
+        </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            message:"",
+            toDoList:[]
+        },
+        methods:{
+            addToDo:function (data) {
+
+                if(this.message == null || this.message === ''){
+                    console.log(this.message)
+                    return;
+                }
+                this.toDoList.push(this.message);
+                this.message = '';
+            }
+        },
+        beforeCreate:function () {
+            console.log("beforeCreate")
+        },
+        created:function () {
+            console.log("created")
+        },
+        beforeMount:function () {
+            console.log("beforeMount")
+        },
+        mounted:function () {
+            console.log("mounted")
+        },
+        beforeDestroy:function () {
+            console.log("beforeDestroy")
+        },
+        destroyed:function () {
+            console.log("destroyed")
+        },
+        beforeUpdate:function () {
+            console.log("beforeUpdate")
+        },
+        updated:function () {
+            console.log("updated")
+        }
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>
