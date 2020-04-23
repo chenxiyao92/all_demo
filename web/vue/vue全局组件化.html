@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="vue.js"></script>
 <body>
-
         <div id="app">
             <input  type="text" v-model="message">
             <button  @click="addToDo()">添加</button>
@@ -16,7 +16,6 @@
                 <!--      v-bind  将item的值 通过名叫    chuandi 的key 传递给 子组件   再由子组件进行渲染          -->
                 <add-li v-bind:chuandi="item" v-for="(item) in toDoList"></add-li>
             </ul>
-
         </div>
 
 </body>
@@ -34,7 +33,6 @@
         },
         methods:{
             addToDo:function (data) {
-
                 if(this.message == null || this.message === ''){
                     console.log(this.message)
                     return;

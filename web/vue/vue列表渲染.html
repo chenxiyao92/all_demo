@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+<!--        <div id="app">-->
+<!--            <div v-for="(item) of list" :key="item.id">{{item.name}}  -&#45;&#45;  {{item.id}}  </div>-->
+<!--        </div>-->
+
+
+        <div id="app">
+<!--         template 相当于占位符 本身不会被渲染   -->
+            <template v-for="(item) of list"  >
+                <div> {{item.id}}  </div>
+                <span>{{item.name}}</span>
+            </template>
+
+
+        </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+           list : [
+               {"id":"001","name":"zhangsan"},
+               {"id":"002","name":"lisii"}
+           ]
+        },
+        methods:{
+            //直接通过数组下标操作 对象的值属性是 不会双向绑定过的
+            //只用通过 提供的 数组操作函数才可以
+            //push pop  shift unshift splice sort reverse
+            //或者改变数组的引用  重新复一个数组
+            // list = [{"id":"001","name":"zhangsan"},
+            // {"id":"002","name":"lisii"}]
+        }
+    });
+
+</script>
+
+
+
+</html>

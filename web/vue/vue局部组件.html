@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="vue.js"></script>
 <body>
-
         <div id="app">
             <input  type="text" v-model="message">
             <button  @click="addToDo()">添加</button>
@@ -15,7 +15,6 @@
               <add-li v-bind:chuandi="item" v-for="(item) in toDoList"></add-li>
             </ul>
         </div>
-
 </body>
 
 <script>

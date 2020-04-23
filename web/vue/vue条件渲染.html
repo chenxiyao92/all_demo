@@ -11,30 +11,40 @@
 <body>
 
         <div id="app">
-            <input  type="text" v-model="message">
-            <button  @click="addToDo()">添加</button>
-            <button  v-on:click="addToDo()">添加2</button>
-            <ul>
-              <li v-for="(item) in toDoList">{{item}}</li>
-            </ul>
-
-
-            <div>{{otherContent}}</div>
-            <div v-text="otherContent+'jiarushuxing'"></div>
-            <div v-html="htmlContent+'jiarushuxing'"> </div>
-
+            <div v-if="show==='aaa'">aaa</div>
+            <div v-else-if="show==='bbb'">bbb</div>
+            <div v-else>ccc</div>
         </div>
 
+
+        <div id="app2">
+            <div v-if="show">a1</div>
+            <div v-else>b1</div>
+        </div>
 </body>
 
 <script>
     var vm = new Vue({
         el: '#app',
         data:{
-            message:"",
-            toDoList:[],
-            otherContent:"shuxing",
-            htmlContent:"<h1>shuxing</h1>",
+            show:'aaa'
+        },
+        methods:{
+            addToDo:function (data) {
+                if(this.message == null || this.message === ''){
+                    console.log(this.message)
+                    return;
+                }
+                this.toDoList.push(this.message);
+                this.message = '';
+            }
+        }
+    });
+
+    var vm2  = new Vue({
+        el: '#app2',
+        data:{
+            show:'aaa'
         },
         methods:{
             addToDo:function (data) {

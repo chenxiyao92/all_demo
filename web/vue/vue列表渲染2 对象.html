@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+<!--             循环对象可以通过 改变对的属性 直接渲染出值 但是无法增删-->
+            <div v-for="(item,key) of user" > {{item}} --- {{key}} </div>
+        </div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+          user :{
+              name:"zhangsan",
+              age:11
+          }
+        },
+        methods:{
+            //直接通过数组下标操作 对象的值属性是 不会双向绑定过的
+            //只用通过 提供的 数组操作函数才可以
+            //push pop  shift unshift splice sort reverse
+            //或者改变数组的引用  重新复一个数组
+            // list = [{"id":"001","name":"zhangsan"},
+            // {"id":"002","name":"lisii"}]
+        }
+    });
+
+</script>
+
+
+
+</html>

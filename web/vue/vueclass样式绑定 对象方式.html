@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style >
+    .clazz {
+        color: red;
+    }
+
+</style>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+          <div @click="handleDivClick"  :class="{clazz: status}">内容</div>
+        </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            status: false
+
+        },
+        methods:{
+            handleDivClick:function () {
+                this.status = !this.status;
+            }
+
+        }
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>

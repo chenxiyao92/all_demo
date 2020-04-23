@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style >
+    .clazz {
+        color: red;
+    }
+
+    .clazz2 {
+        size: 212px;
+    }
+
+</style>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+          <div @click="handleDivClick"  :class="[activeclass,activeclass2]">内容</div>
+        </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            "activeclass" : "",
+            activeclass2 : "clazz2"
+        },
+        methods:{
+            handleDivClick:function () {
+                this.activeclass = this.activeclass === "clazz" ? "" : "clazz";
+            }
+
+        }
+    });
+    //定时器里面传时间
+    // setTimeout(function () {
+    //     vm.$data.message='bye world'
+    // },2000);
+</script>
+
+
+
+</html>
