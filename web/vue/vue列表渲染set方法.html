@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+<!--             循环对象可以通过 改变对的属性 直接渲染出值 但是无法增删-->
+            <div v-for="(item,key) of user" > {{item}} --- {{key}} </div>
+        </div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+          user :{
+              name:"zhangsan",
+              age:11
+          }
+        },
+        methods:{
+
+        }
+    });
+
+</script>
+
+
+
+</html>

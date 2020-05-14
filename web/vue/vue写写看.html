@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+             {{num + 1}}
+            {{flag ? 'true111':'false111'}}
+
+            {{toDoList.join()}}
+
+
+<!--            <a v-bind:href="attr" >点我</a>-->
+            <a v-bind:[attr1]="attr">点我2</a>
+        </div>
+
+</body>
+
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            attr1:'href',
+            message: "1",
+            toDoList:['a','b','c'],
+            num:0,
+            flag:true,
+            attr:"www.baidu.com"
+        },
+        methods:{
+            add:function () {
+                this.toDoList.push(this.message)
+                console.log(this.toDoList)
+            }
+        },
+        computed:{
+        },
+        created: function () {
+            // `this` 指向 vm 实例
+            console.log('a is: ' + this.a)
+        },
+        watch : {
+            message:function () {
+                console.log('监听message')
+
+            }
+        }
+    });
+
+    console.log('渲染完成之后')
+    vm.$data.message = 'b'
+
+
+</script>
+
+
+
+</html>

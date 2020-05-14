@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,6 +23,9 @@
             <div v-text="otherContent+'jiarushuxing'"></div>
             <div v-html="htmlContent+'jiarushuxing'"> </div>
 
+            <div v-text="word"></div>
+            <button v-on:click="reverse" >翻转</button>
+
         </div>
 
 </body>
@@ -31,6 +34,7 @@
     var vm = new Vue({
         el: '#app',
         data:{
+            word:"qwert",
             message:"",
             toDoList:[],
             otherContent:"shuxing",
@@ -44,6 +48,14 @@
                 }
                 this.toDoList.push(this.message);
                 this.message = '';
+            },
+            reverse :function () {
+                var strings = this.word.split('');
+                var strings1 = strings.reverse();
+                var s = ["1","2","23"];
+                this.message = s.join(',');
+                console.log(strings1);
+                this.word = this.word.split('').reverse().join('')
             }
         }
     });

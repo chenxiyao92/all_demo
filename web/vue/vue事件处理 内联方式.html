@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="vue.js"></script>
+
+
+<body>
+
+        <div id="app">
+            <!--  button 是tagName             -->
+            <button @click="addCount" name="aaa"> 我是计数器 </button>
+            <div> 已经被点击了 {{countNum}}</div>
+
+
+            <button @click="addCount('ww')" name="aaa"> 我是计数器 </button>
+        </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+            el: '#app',
+            data:{
+                countNum:0
+            },
+            methods:{
+                addCount:function (event) {
+                    console.log(event)
+                  this.countNum=this.countNum+1
+                }
+            }
+        }
+    );
+</script>
+
+
+
+</html>

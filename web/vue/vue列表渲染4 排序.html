@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+            <template v-for="n in 10 ">
+                message     content
+                <br>
+            </template>
+
+        </div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            numbers: [ 1, 2, 3, 4, 5 ]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        }
+    });
+
+</script>
+
+
+
+</html>

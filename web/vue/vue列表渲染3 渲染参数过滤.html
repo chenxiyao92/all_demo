@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+<div id="app">
+    <!--             循环对象可以通过 改变对的属性 直接渲染出值 但是无法增删-->
+<!--    <li v-for="n in filterMethod(orilist)">{{ n }}</li>-->
+    <li v-for="word in 10  ">{{word}}</li>
+</div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            orilist: [1, 2, 3, 4, 5, 6, 7, 7, 8]
+        },
+        // computed: {
+        //     filternum: function () {
+        //         return this.orilist.filter(function (num) {
+        //             // 这里filter返回的数据 是 过滤后生成的新的数据\
+        //             // filter 传入一个函数 如果是偶数则返回
+        //             if (num % 2 === 0) {
+        //                 return num
+        //             }
+        //         })
+        //     }
+        // }
+        methods:{
+            //这里传入的是一个list ,需要返回一个过滤后的list
+            filterMethod:function (numList) {
+               return  numList.filter(function (num) {
+                        if (num % 2 === 0 ){
+                            return num
+                        }
+                })
+            }
+
+        }
+    });
+
+</script>
+
+
+</html>

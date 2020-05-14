@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vue.js"></script>
+<body>
+
+        <div id="app">
+<!--             循环对象可以通过 改变对的属性 直接渲染出值 但是无法增删-->
+            <li v-for="n in evenNumbers">{{ n }}</li>
+        </div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            numbers: [ 1, 2, 3, 4, 5 ]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        }
+    });
+
+</script>
+
+
+
+</html>

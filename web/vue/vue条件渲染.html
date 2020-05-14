@@ -14,6 +14,12 @@
             <div v-if="show==='aaa'">aaa</div>
             <div v-else-if="show==='bbb'">bbb</div>
             <div v-else>ccc</div>
+
+            <template v-if="templateboo">
+                哈哈哈哈哈
+                <h1>123123</h1>
+            </template>
+
         </div>
 
 
@@ -21,13 +27,18 @@
             <div v-if="show">a1</div>
             <div v-else>b1</div>
         </div>
+
 </body>
+
+
+
 
 <script>
     var vm = new Vue({
         el: '#app',
         data:{
-            show:'aaa'
+            show:'aaa',
+            templateboo:false
         },
         methods:{
             addToDo:function (data) {
